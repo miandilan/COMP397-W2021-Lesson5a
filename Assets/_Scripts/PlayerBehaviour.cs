@@ -6,22 +6,26 @@ public class PlayerBehaviour : MonoBehaviour
 {
     public CharacterController controller;
 
-    [Header("Control Properties")]
+    [Header("Movement")]
     public float maxSpeed = 10.0f;
     public float gravity = -30.0f;
     public float jumpHeight = 3.0f;
     public Vector3 velocity;
 
-    [Header("Ground Detection Properties")]
+    [Header("Ground Detection")]
     public Transform groundCheck;
     public float groundRadius = 0.5f;
     public LayerMask groundMask;
     public bool isGrounded;
 
+    [Header("MiniMap")]
+    public GameObject miniMap;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        miniMap.SetActive(false);
     }
 
     // Update is called once per frame - once every 16.6666ms
@@ -54,6 +58,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             //toggle the Minimap on/off 
+            miniMap.SetActive(miniMap.activeInHierarchy);
         }
     }
 
